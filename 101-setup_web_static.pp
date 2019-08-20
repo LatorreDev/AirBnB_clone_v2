@@ -24,7 +24,7 @@ command  => 'sudo chown -R ubuntu /data/ && chgrp -R ubuntu /data/',
 provider => shell,
 }
 -> exec { 'sed':
-command  => "sudo sed -i '37i\\tlocation /hbnb_static/ {\n\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-enabled/default",
+command  => 'sudo sed -i \'37i\\tlocation /hbnb_static/ {\n\talias /data/web_static/current/;\n\t}\' /etc/nginx/sites-enabled/default',
 provider => shell,
 }
 -> exec {'Restart':
