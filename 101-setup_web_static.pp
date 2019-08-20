@@ -20,14 +20,14 @@ command  => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
 provider => shell,
 }
 -> exec {'permissions':
-command  => 'chown -R ubuntu /data/ && chgrp -R ubuntu /data/',
+command  => 'sudo chown -R ubuntu /data/ && chgrp -R ubuntu /data/',
 provider => shell,
 }
 -> exec { 'sed':
-command  => "sed -i '37i\\tlocation /hbnb_static/ {\n\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-enabled/default",
+command  => "sudo sed -i '37i\\tlocation /hbnb_static/ {\n\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-enabled/default",
 provider => shell,
 }
 -> exec {'Restart':
-command  => 'service nginx restart',
+command  => 'sudo service nginx restart',
 provider => shell,
 }
