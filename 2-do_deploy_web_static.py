@@ -23,7 +23,6 @@ def do_deploy(archive_path):
         put(archive_path, "/tmp/")
         my_tgz = archive_path.split("/")[1].split(".")[0]
         path = "/data/web_static/releases/{}".format(my_tgz)
-        print(path)
         run("mkdir {}".format(path))
         run("tar -zxvf /tmp/{}.tgz -C {}/".format(my_tgz, path))
         run("sudo rm /tmp/{}".format(archive_path.split("/")[1]))
