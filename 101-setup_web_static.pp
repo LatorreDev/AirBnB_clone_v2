@@ -8,7 +8,7 @@ provider => shell,
 ensure => installed
 }
 -> file{ [ '/data/', '/data/web_static/', '/data/web_static/releases/',
-'/data/web_static/shared/', '/data/web_static/releases/test/',]
+'/data/web_static/shared/', '/data/web_static/releases/test/',]:
 ensure => directory,
 }
 -> file { '/data/web_static/releases/test/index.html':
@@ -28,6 +28,6 @@ command  => "sed -i '37i\\tlocation /hbnb_static/ {\n\talias /data/web_static/cu
 provider => shell,
 }
 -> exec {'Restart':
-command  => service nginx restart,
+command  => 'service nginx restart',
 provider => shell,
 }
